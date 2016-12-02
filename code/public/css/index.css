@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.loginBox{
+    height: 400px;
+    width:  300px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: #DFEDE1;
+    align-items: center;
+    justify-content: center;
+    font-family: Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, sans-serif;
+}
+
+.logo {
+    height: 30%;
+    margin-bottom: 10px;
+}
+
+.title{
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.fields {
+    padding-left: 10px;
+}
+
+.userField {
+    border-radius: 6px;
+    font-size: 1.2em;
+}
+
+.passField {
+    border-radius: 6px;
+    font-size: 1.2em;
+}
+
+.loginButton {
+    border-radius: 5px;
+    font-family: Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, sans-serif;
+    font-size: 1.3em;
+    margin: auto;
+    margin-top: 20px;
+    background-color: aqua;
+}

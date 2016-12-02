@@ -1,0 +1,20 @@
+<!doctype html> <html>
+<head>
+    <meta charset="utf-8" />
+    <title>nBe Login Test</title>
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <script src="/js/fail_page.js"></script>
+</head>
+<body onload="wrong_pass()">
+<div class="loginBox">
+    <img src="/png/nbe_logo.png" class="logo">
+
+    <form class="form" action="/login" method="post">
+        <input type="email" name="user" class="userField">
+        <input type="password" name="password" class="passField">
+        <br>
+        <input type="submit" value="Logga in" id= "loginButton" class="loginButton">
+    </form>
+</div>
+</body>
+</html>
