@@ -9,7 +9,7 @@ body {
 }
 
 .loginBox{
-    height: 400px;
+    height: 300px;
     width:  300px;
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@ body {
 }
 
 .logo {
-    height: 30%;
+    height: 40%;
     margin-bottom: 10px;
 }
 
@@ -36,16 +36,13 @@ body {
     justify-content: center;
 }
 
-.fields {
-    padding-left: 10px;
-}
-
 .userField {
     border-radius: 6px;
     font-size: 1.2em;
 }
 
 .passField {
+    margin-top: 20px;
     border-radius: 6px;
     font-size: 1.2em;
 }
@@ -56,5 +53,5 @@ body {
     font-size: 1.3em;
     margin: auto;
     margin-top: 20px;
-    background-color: aqua;
+    background-color: white;
 }

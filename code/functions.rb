@@ -1,27 +1,25 @@
 def checkDatabase(user:, pass:)
   hash = Hash.new
+  hashPass = encode(msg: pass)
 
-  File.open("database/info.txt", 'r') do |file|
+  File.open("database/database.txt", 'r') do |file|
     lines = []
     file.readlines().each do |line|
       lines << line.chomp
     end
-
-    p lines
 
     lines.each do |line|
       hash[line[0, line.index(':')]] = line[line.index(':') + 1, line.length]
     end
   end
 
-  p hash
-
-  if hash.has_key?(user) && hash[user] == pass
+  if hash.has_key?(user) && hash[user] == hashPass
     return true
   else
     return false
   end
 end
 
-
-p checkDatabase(user: "rikard.sjostedt@itggot.se", pass: "word")
+def encode(msg:)
+  return Digest::SHA256.hexdigest  msg
+end

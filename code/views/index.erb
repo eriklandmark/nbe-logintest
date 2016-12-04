@@ -1,20 +1,18 @@
 <!doctype html> <html>
-<head>
+  <head>
     <meta charset="utf-8" />
     <title>nBe Login Test</title>
     <link rel="stylesheet" type="text/css" href="/css/index.css">
-</head>
-<body>
-<div class="loginBox">
-    <img src="/png/nbe_logo.png" class="logo">
+  </head>
+  <body>
+    <div class="loginBox">
+      <img src="/png/nbe_logo.png" class="logo">
 
-    <form class="form" action="/login" method="post">
-        <b><p class="fields">Email:</p></b>
-        <input type="email" name="user" class="userField">
-        <b><p class="fields">Password:</p></b>
-        <input type="password" name="password" class="passField">
+      <form class="form" action="/login" method="post">
+        <input type="email" name="user" class="userField" placeholder="Email..">
+        <input type="password" name="password" class="passField" placeholder="Lösenord..">
         <input type="submit" value="Logga in" id= "loginButton" class="loginButton">
-    </form>
-</div>
-</body>
+      </form>
+    </div>
+  </body>
 </html>

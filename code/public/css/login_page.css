@@ -1,0 +1,149 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    width: 700px;
+    height: 60px;
+    margin-top: 30px;
+    align-items: center;
+
+}
+
+.logo{
+    width: 160px;
+    height: 80px;
+}
+
+.menuItem1, .menuItem2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+.menuItem1 {
+    flex-grow: 3;
+    background-color: #DFEDE1;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    font-family: "Source Code Pro", Monaco, monospace;
+}
+
+.welcomeMsg {
+    margin: 0;
+}
+
+.menuItem2 {
+    background-color: #DFEDE1;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+
+.logout-button {
+    text-decoration: none;
+    color: black;
+    font-family: "Source Code Pro", Monaco, monospace;
+    padding-right: 5px;
+}
+
+article {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    width: 900px;
+}
+
+.sideBar {
+    flex-grow: 1;
+    background-color: white;
+    padding-right: 15px;
+    max-width: 120px;
+    min-height: 195px;
+    text-align: center;
+}
+
+.barlinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-family: "Source Code Pro", Monaco, monospace;
+
+}
+#barItem1 {
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+#barItem2, #barItem3, #barItem4 {
+    padding: 10px;
+    border-top: 1px outset #ddd;
+    text-align: center;
+
+}
+
+#barItem1:hover {background-color: #ddd; border-radius: 8px;}
+#barItem2:hover {background-color: #ddd; border-radius: 8px;}
+#barItem3:hover {background-color: #ddd; border-radius: 8px;}
+#barItem4:hover {background-color: #ddd; border-radius: 8px;}
+#barItem1:focus, .active {background-color: #ccc; border-radius: 8px;}
+#barItem2:focus, .active {background-color: #ccc; border-radius: 8px;}
+#barItem1:focus, .active {background-color: #ccc; border-radius: 8px;}
+#barItem4:focus, .active {background-color: #ccc; border-radius: 8px;}
+
+.area {
+    flex-grow: 13;
+    background-color: #DFEDE1;
+    border-radius: 10px;
+    height: 400px;
+    padding: 15px;
+}
+
+.tabcontent {
+    display: none;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+    flex-direction: column;
+}
+
+#areaStatistik {
+    display: flex;
+    flex-direction: column;
+}
+
+#area2 ,#area3, #area4{
+    flex-direction: column;
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.title {
+    margin: 0;
+    font-family: "Source Code Pro", Monaco, monospace;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#fileTree {
+    margin-top: 10px;
+}
+

@@ -1,11 +1,80 @@
 <html>
-<head>
-  <meta charset="utf-8" />
-  <title>nBe Login Test</title>
-  <link rel="stylesheet" type="text/css" href="/css/login_page.css">
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <title>nBe Login Test</title>
+    <link rel="stylesheet" type="text/css" href="/css/login_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+    <script src="/js/login_page.js"></script>
+  </head>
   <body>
-    <p>Välkommen <%= params["user"]%>!</p>
-    <p>Ditt lösenord är: <%= params["password"]%></p>
+    <nav class="navBar">
+      <img src="/png/nbe_logo.png" class="logo">
+      <div class="menuItem1">
+        <p class="welcomeMsg">Välkommen <%= params["user"]%>!</p>
+      </div>
+      <div class="menuItem2">
+        <a href="logout" class="logout-button">Logga ut</a>
+      </div>
+    </nav>
+
+    <article>
+      <div class="sideBar">
+        <div id="barItem1" class="barlinks active" onclick="openTab(event, 'areaStatistik')">
+          <a href="javascript:void(0)" class="barlinks" onclick="openTab(event, 'barItem1')">Statistik</a>
+        </div>
+        <div id="barItem2" class="barlinks" onclick="openTab(event, 'area2')">
+          <a href="javascript:void(0)" class="barlinks" onclick="openTab(event, 'barItem2')">Filer</a>
+        </div>
+        <div id="barItem3" class="barlinks" onclick="openTab(event, 'area3')">
+          <a href="javascript:void(0)" class="barlinks" onclick="openTab(event, 'barItem3')">Bar Item 3</a>
+        </div>
+        <div id="barItem4" class="barlinks" onclick="openTab(event, 'area4')">
+          <a href="javascript:void(0)" class="barlinks" onclick="openTab(event, 'barItem4')">Bar Item 4</a>
+        </div>
+      </div>
+
+      <div class="area">
+        <div id="areaStatistik" class="tabcontent">
+          <h2 class="title">Statistik</h2>
+
+        </div>
+        <div id="area2" class="tabcontent">
+          <h2 class="title">Filer</h2>
+
+          <form id="upload_form" action="/upload" enctype="multipart/form-data" method="post">
+            <input type="file" id="fileinput" name="fileInput" />
+            <input type="submit" id="uploadButton" />
+          </form>
+
+          <div id="fileTree">
+            <ul>
+              <li id="publicMap">Public
+                <ul>
+                  <li id="child_node_1">Node 1</li>
+                  <li>Child node 2</li>
+                </ul>
+              </li>
+              <li id="privateMap">Private
+                <ul>
+                  <li id="child_node">Child node 1</li>
+                  <li>Child node 2</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <%= p "HEj" %>
+        </div>
+
+        <div id="area3" class="tabcontent">
+          <h2 class="title">Bar Page 3</h2>
+        </div>
+
+        <div id="area4" class="tabcontent">
+          <h2 class="title">Bar Page 4</h2>
+        </div>
+      </div>
+    </article>
   </body>
 </html>

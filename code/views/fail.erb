@@ -4,17 +4,18 @@
     <title>nBe Login Test</title>
     <link rel="stylesheet" type="text/css" href="/css/index.css">
     <script src="/js/fail_page.js"></script>
-</head>
-<body onload="wrong_pass()">
-<div class="loginBox">
-    <img src="/png/nbe_logo.png" class="logo">
+    </head>
+    <body onload="wrong_pass()">
+        <div class="loginBox">
+          <div class="loginBox">
+            <img src="/png/nbe_logo.png" class="logo">
 
-    <form class="form" action="/login" method="post">
-        <input type="email" name="user" class="userField">
-        <input type="password" name="password" class="passField">
-        <br>
-        <input type="submit" value="Logga in" id= "loginButton" class="loginButton">
-    </form>
-</div>
-</body>
+            <form class="form" action="/login" method="post">
+              <input type="email" name="user" class="userField" placeholder="Email..">
+              <input type="password" name="password" class="passField" placeholder="Lösenord..">
+              <input type="submit" value="Logga in" id= "loginButton" class="loginButton">
+            </form>
+          </div>
+        </div>
+    </body>
 </html>
