@@ -12,7 +12,7 @@
     <nav class="navBar">
       <img src="/png/nbe_logo.png" class="logo">
       <div class="menuItem1">
-        <p class="welcomeMsg">Välkommen <%= params["user"]%>!</p>
+        <p class="welcomeMsg">Välkommen <%= session[:user]%>!</p>
       </div>
       <div class="menuItem2">
         <a href="logout" class="logout-button" method="get" action="<%= params["user"]%>">Logga ut</a>
@@ -36,19 +36,36 @@
       </div>
 
       <div class="area">
+
         <div id="areaStatistik" class="tabcontent">
           <h2 class="title">Statistik</h2>
-
         </div>
         <div id="area2" class="tabcontent">
           <h2 class="title">Filer</h2>
 
-          <form id="upload_form" action="/upload" method="post">
+          <form id="upload_form" action="/upload" method="post" enctype="multipart/form-data">
             <input type="file" id="fileinput" name="fileInput" />
             <input type="submit" id="uploadButton" />
           </form>
 
           <div id="fileTree">
+            <script>
+                function handleFileSelect(evt) {
+                    var files = evt.target.files; // FileList object
+
+                    // files is a FileList of File objects. List some properties.
+                    var output = [];
+                    for (var i = 0, f; f = files[i]; i++) {
+                        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                            f.size, ' bytes, last modified: ',
+                            f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                            '</li>');
+                    }
+                    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+                }
+
+                document.getElementById('files').addEventListener('change', handleFileSelect, false);
+            </script>
             <ul>
               <li id="publicMap">Public
                 <ul>
