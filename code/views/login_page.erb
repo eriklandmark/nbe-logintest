@@ -48,42 +48,48 @@
             <input type="submit" id="uploadButton" />
           </form>
 
-          <div id="fileTree">
-            <script>
-                function handleFileSelect(evt) {
-                    var files = evt.target.files; // FileList object
+          <%
+            require 'find'
+            def getFiles()
+              directory = []
+              Find.find("database/files/private/" + session[:user]) do |path|
+                directory << path
+              end
 
-                    // files is a FileList of File objects. List some properties.
-                    var output = [];
-                    for (var i = 0, f; f = files[i]; i++) {
-                        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                            f.size, ' bytes, last modified: ',
-                            f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                            '</li>');
-                    }
-                    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-                }
+              files = Array.new
+              dirs = Array.new
+              directory.each() do |obj|
+                if !File.directory?(obj) && File.file?(obj)
+                  p "Adding file: " + obj
+                  files << obj
+                elsif File.directory?(obj) && !File.file?(obj)
+                  p "Adding dir: " + obj
+                  dirs << obj
+                end
+              end
+              return files
+            end
+          %>
+          <script>
+              files = <%= getFiles()%>;
+              var body = document.getElementById("area2");
+              listDiv = document.createElement('div');
+              listDiv.id = 'listDiv';
+              body.appendChild(listDiv);
 
-                document.getElementById('files').addEventListener('change', handleFileSelect, false);
-            </script>
-            <ul>
-              <li id="publicMap">Public
-                <ul>
-                  <li id="child_node_1">Node 1</li>
-                  <li>Child node 2</li>
-                </ul>
-              </li>
-              <li id="privateMap">Private
-                <ul>
-                  <li id="child_node">Child node 1</li>
-                  <li>Child node 2</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <% if false %>
-              <%= p "HEj" %>
-          <% end %>
+              list = document.createElement('ul');
+              listDiv.appendChild(list);
+
+              for (i = 0; i < files.length; i++) {
+                  listItem = document.createElement('li');
+                  list.appendChild(listItem);
+                  dwnldLink = document.createElement('a');
+                  dwnldLink.setAttribute("href", "/download/" + files[i].substring(files[i].lastIndexOf("/") + 1));
+                  dwnldLink.textContent = files[i].substring(files[i].lastIndexOf("/") + 1);
+                  listItem.appendChild(dwnldLink);
+              }
+
+          </script>
         </div>
 
         <div id="area3" class="tabcontent">

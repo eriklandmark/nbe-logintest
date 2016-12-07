@@ -8,11 +8,7 @@ require_relative  'functions'
 enable :sessions
 
 get '/' do
-  if session[:user] != ""
-    erb :login_page
-  else
-    erb :index
-  end
+  erb :index
 end
 
 get '/login' do
@@ -43,6 +39,15 @@ get '/post' do
   erb :info
 end
 
+get '/download/:filename' do |filename|
+
+  path = "database/files/private/erik.landmark@itggot.se/" + filename
+  if File.exists?(path)
+    send_file path, :filename => filename, :type => 'Application/octet-stream'
+  end
+  redirect "/post"
+end
+
 post '/upload' do
   p "Uploading file..."
   if !Dir.exists?("database/files/private/"+session[:user])
@@ -51,5 +56,5 @@ post '/upload' do
   File.open("database/files/private/"+ session[:user] + "/" + params["fileInput"][:filename], "w") do |f|
     f.write(params["fileInput"][:tempfile].read)
   end
-  redirect "/post"
+  erb :login_page
 end
