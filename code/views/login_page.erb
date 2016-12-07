@@ -15,7 +15,7 @@
         <p class="welcomeMsg">Välkommen <%= params["user"]%>!</p>
       </div>
       <div class="menuItem2">
-        <a href="logout" class="logout-button">Logga ut</a>
+        <a href="logout" class="logout-button" method="get" action="<%= params["user"]%>">Logga ut</a>
       </div>
     </nav>
 
@@ -43,7 +43,7 @@
         <div id="area2" class="tabcontent">
           <h2 class="title">Filer</h2>
 
-          <form id="upload_form" action="/upload" enctype="multipart/form-data" method="post">
+          <form id="upload_form" action="/upload" method="post">
             <input type="file" id="fileinput" name="fileInput" />
             <input type="submit" id="uploadButton" />
           </form>
@@ -64,7 +64,9 @@
               </li>
             </ul>
           </div>
-          <%= p "HEj" %>
+          <% if false %>
+              <%= p "HEj" %>
+          <% end %>
         </div>
 
         <div id="area3" class="tabcontent">
