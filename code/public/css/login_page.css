@@ -9,7 +9,6 @@ body {
     flex-direction: row;
     width: 700px;
     height: 60px;
-    margin-top: 30px;
     align-items: center;
 
 }
@@ -29,8 +28,6 @@ body {
 .menuItem1 {
     flex-grow: 3;
     background-color: #DFEDE1;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
     font-family: "Source Code Pro", Monaco, monospace;
 }
 
@@ -59,16 +56,14 @@ body {
 article {
     display: flex;
     flex-direction: row;
-    margin-top: 40px;
-    width: 900px;
+    width: 100%;
 }
 
 .sideBar {
     flex-grow: 1;
     background-color: white;
-    padding-right: 15px;
     max-width: 120px;
-    min-height: 195px;
+    min-height: 100vh;
     text-align: center;
 }
 
@@ -107,7 +102,6 @@ article {
     background-color: #DFEDE1;
     border-radius: 10px;
     height: 400px;
-    padding: 15px;
 }
 
 .tabcontent {

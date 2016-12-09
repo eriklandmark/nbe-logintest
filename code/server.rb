@@ -23,7 +23,7 @@ post '/login' do
     params["user"] = ""
     params["password"] = ""
     session[:user] = user
-    erb :login_page
+    erb :login_page2
   else
     erb :fail
   end
@@ -56,5 +56,5 @@ post '/upload' do
   File.open("database/files/private/"+ session[:user] + "/" + params["fileInput"][:filename], "w") do |f|
     f.write(params["fileInput"][:tempfile].read)
   end
-  erb :login_page
+  erb :login_page2
 end

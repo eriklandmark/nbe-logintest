@@ -9,7 +9,7 @@
     <script src="/js/login_page.js"></script>
   </head>
   <body>
-    <nav class="navBar">
+    <!--<nav class="navBar">
       <img src="/png/nbe_logo.png" class="logo">
       <div class="menuItem1">
         <p class="welcomeMsg">Välkommen <%= session[:user]%>!</p>
@@ -17,7 +17,7 @@
       <div class="menuItem2">
         <a href="logout" class="logout-button" method="get" action="<%= params["user"]%>">Logga ut</a>
       </div>
-    </nav>
+    </nav>-->
 
     <article>
       <div class="sideBar">
@@ -48,6 +48,21 @@
             <input type="submit" id="uploadButton" />
           </form>
 
+          <div id="fileTree">
+            <ul>
+              <li id="publicMap">Public
+                <ul class="publicFiles">
+                  <li id="child_node_1">Node 1</li>
+                  <li>Child node 2</li>
+                </ul>
+              </li>
+              <li id="privateMap">Private
+                <ul id="privateFiles">
+                </ul>
+              </li>
+            </ul>
+          </div>
+
           <%
             require 'find'
             def getFiles()
@@ -60,35 +75,17 @@
               dirs = Array.new
               directory.each() do |obj|
                 if !File.directory?(obj) && File.file?(obj)
-                  p "Adding file: " + obj
                   files << obj
                 elsif File.directory?(obj) && !File.file?(obj)
-                  p "Adding dir: " + obj
                   dirs << obj
                 end
               end
               return files
             end
           %>
+
           <script>
-              files = <%= getFiles()%>;
-              var body = document.getElementById("area2");
-              listDiv = document.createElement('div');
-              listDiv.id = 'listDiv';
-              body.appendChild(listDiv);
-
-              list = document.createElement('ul');
-              listDiv.appendChild(list);
-
-              for (i = 0; i < files.length; i++) {
-                  listItem = document.createElement('li');
-                  list.appendChild(listItem);
-                  dwnldLink = document.createElement('a');
-                  dwnldLink.setAttribute("href", "/download/" + files[i].substring(files[i].lastIndexOf("/") + 1));
-                  dwnldLink.textContent = files[i].substring(files[i].lastIndexOf("/") + 1);
-                  listItem.appendChild(dwnldLink);
-              }
-
+             loadFiles(<%= getFiles()%>);
           </script>
         </div>
 

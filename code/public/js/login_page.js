@@ -23,11 +23,27 @@ function openTab(evt, cityName) {
     evt.currentTarget.className += " active";
 }
 
+function loadFiles(fileList) {
+    files = fileList;
+
+    list = document.getElementById("privateFiles");
+
+    for (i = 0; i < files.length; i++) {
+        listItem = document.createElement('li');
+        list.appendChild(listItem);
+        dwnldLink = document.createElement('a');
+        dwnldLink.setAttribute("href", "/download/" + files[i].substring(files[i].lastIndexOf("/") + 1));
+        dwnldLink.textContent = files[i].substring(files[i].lastIndexOf("/") + 1);
+        listItem.appendChild(dwnldLink);
+    }
+}
+
 $(function () {
     // 6 create an instance when the DOM is ready
     $('#fileTree').jstree();
     // 7 bind to events triggered on the tree
     $('#fileTree').on("changed.fileTree", function (e, data) {
         console.log(data.selected);
+
     });
 });
