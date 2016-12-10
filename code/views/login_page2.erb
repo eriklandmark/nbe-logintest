@@ -10,26 +10,126 @@
       <div class="logo">
         <img src="/png/nbe_logo.png" class="logoImg">
       </div>
-      <div id="menuItem1" class="barlinks active" onclick="openTab(event, 'areaStatistik')">
-        <a href="javascript:void(0)" class="barlinks" onclick="openTab(event, 'menuItem1')">Statistik</a>
+      <div id="menuItem1" class="barlinks active" onclick="openPage(event, 'areaStatistik')">
+        <a href="javascript:void(0)" class="barlinks" onclick="openPage(event, 'areaStatistik')">Statistik</a>
       </div>
-      <div id="menuItem2" class="barlinks" onclick="openTab(event, 'area2')">
-        <a href="javascript:void(0)" class="barlinks" onclick="openTab(event, 'menuItem2')">Filer</a>
+      <div id="menuItem2" class="barlinks" onclick="openPage(event, 'areaFiles')">
+        <a href="javascript:void(0)" class="barlinks" onclick="openPage(event, 'areaFiles')">Filer</a>
       </div>
-      <div id="menuItem3" class="barlinks" onclick="openTab(event, 'area3')">
-        <a href="javascript:void(0)" class="barlinks" onclick="openTab(event, 'menuItem3')">Bar Item 3</a>
-      </div>
-      <div id="menuItem4" class="barlinks" onclick="openTab(event, 'area4')">
-        <a href="javascript:void(0)" class="barlinks" onclick="openTab(event, 'menuItem4')">Bar Item 4</a>
+      <div id="menuItem3" class="barlinks" onclick="openPage(event, 'areaUser')">
+        <a href="javascript:void(0)" class="barlinks" onclick="openPage(event, 'areaUser')">Användar Inst.</a>
       </div>
     </div>
+
     <article>
-      <div id="settingsMenu">
-
+      <div id="areaStatistik" class="barcontent" >
+        <div id="settingsStatistik" class="settingsTab">
+          <h1 class="title">Statistik</h1>
+        </div>
+        <div id="contentStatistik" class="contentTab">
+          test
+        </div>
       </div>
-      <div id="contentArea">
 
+      <div id="areaFiles" class="barcontent">
+        <div id="settingsFiles" class="settingsTab">
+          <h1 class="title">Filer</h1>
+          <div id="filesSettingsItem1" class="tablinks activeTab" onclick="openTab(event, 'contentAreaUpload')">
+            <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'contentAreaUploadv')">Upload</a>
+          </div>
+          <div id="filesSettingsItem2" class="tablinks" onclick="openTab(event, 'contentAreaPublic')">
+            <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'contentAreaPublic')">Public Files</a>
+          </div>
+          <div id="filesSettingsItem3" class="tablinks" onclick="openTab(event, 'contentAreaPrivate')">
+            <a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'contentAreaPrivate')">Private Files</a>
+          </div>
+        </div>
+        <div id="contentFiles" class="contentTab">
+
+          <div id="contentAreaUpload" class="settingsContentItems">
+            <h1 class="contentTitle">Ladda upp</h1>
+
+            <form id="upload_form" action="/upload" method="post" enctype="multipart/form-data">
+              <input type="file" id="fileinput" name="fileInput" />
+              <input type="submit" id="uploadButton" />
+            </form>
+          </div>
+
+          <div id="contentAreaPublic" class="settingsContentItems">
+            <h1 class="contentTitle">Publika Filer</h1>
+            <ul id="publicFiles"></ul>
+            <%
+              require 'find'
+              def getFiles()
+                directory = []
+                Find.find("database/files/private/" + session[:user]) do |path|
+                  directory << path
+                end
+
+                files = Array.new
+                dirs = Array.new
+                directory.each() do |obj|
+                  if !File.directory?(obj) && File.file?(obj)
+                    files << obj
+                  elsif File.directory?(obj) && !File.file?(obj)
+                    dirs << obj
+                  end
+                end
+                return files
+              end
+            %>
+            <script>
+                loadPublicFiles(<%= getFiles()%>);
+            </script>
+          </div>
+
+          <div id="contentAreaPrivate" class="settingsContentItems">
+            <h1 class="contentTitle">Privata Filer</h1>
+            <ul id="privateFiles"></ul>
+            <%
+              require 'find'
+              def getFiles()
+                directory = []
+                Find.find("database/files/private/" + session[:user]) do |path|
+                  directory << path
+                end
+
+                files = Array.new
+                dirs = Array.new
+                directory.each() do |obj|
+                  if !File.directory?(obj) && File.file?(obj)
+                    files << obj
+                  elsif File.directory?(obj) && !File.file?(obj)
+                    dirs << obj
+                  end
+                end
+                return files
+              end
+            %>
+            <script>
+                loadPrivateFiles(<%= getFiles()%>);
+            </script>
+          </div>
+        </div>
+        </div>
       </div>
+
+      <div id="areaUser" class="barcontent">
+        <div id="settingsUser" class="settingsTab">
+          <div id="logOut" onclick="location.href='/logout';">
+            <p id="logOutText">Logga Ut</p>
+          </div>
+          <div class="tabs">
+            <h1 class="title">User</h1>
+            <p>hej</p>
+          </div>
+        </div>
+
+        <div id="contentUser" class="contentTab">
+          test
+        </div>
+      </div>
+
     </article>
   </body>
 </html>
