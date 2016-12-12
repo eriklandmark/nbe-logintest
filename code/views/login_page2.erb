@@ -4,6 +4,26 @@
     <title>nBe Login Test v2</title>
     <link rel="stylesheet" type="text/css" href="/css/login_page2.css">
     <script src="/js/login_page.js"></script>
+    <%
+      require 'find'
+      def getFiles()
+        directory = []
+        Find.find("database/files/private/" + session[:user]) do |path|
+          directory << path
+        end
+
+        files = Array.new
+        dirs = Array.new
+        directory.each() do |obj|
+          if !File.directory?(obj) && File.file?(obj)
+            files << obj
+          elsif File.directory?(obj) && !File.file?(obj)
+            dirs << obj
+          end
+        end
+        return files
+      end
+    %>
   </head>
   <body>
     <div id="menu">
@@ -58,26 +78,7 @@
           <div id="contentAreaPublic" class="settingsContentItems">
             <h1 class="contentTitle">Publika Filer</h1>
             <ul id="publicFiles"></ul>
-            <%
-              require 'find'
-              def getFiles()
-                directory = []
-                Find.find("database/files/private/" + session[:user]) do |path|
-                  directory << path
-                end
 
-                files = Array.new
-                dirs = Array.new
-                directory.each() do |obj|
-                  if !File.directory?(obj) && File.file?(obj)
-                    files << obj
-                  elsif File.directory?(obj) && !File.file?(obj)
-                    dirs << obj
-                  end
-                end
-                return files
-              end
-            %>
             <script>
                 loadPublicFiles(<%= getFiles()%>);
             </script>
@@ -86,26 +87,6 @@
           <div id="contentAreaPrivate" class="settingsContentItems">
             <h1 class="contentTitle">Privata Filer</h1>
             <ul id="privateFiles"></ul>
-            <%
-              require 'find'
-              def getFiles()
-                directory = []
-                Find.find("database/files/private/" + session[:user]) do |path|
-                  directory << path
-                end
-
-                files = Array.new
-                dirs = Array.new
-                directory.each() do |obj|
-                  if !File.directory?(obj) && File.file?(obj)
-                    files << obj
-                  elsif File.directory?(obj) && !File.file?(obj)
-                    dirs << obj
-                  end
-                end
-                return files
-              end
-            %>
             <script>
                 loadPrivateFiles(<%= getFiles()%>);
             </script>
