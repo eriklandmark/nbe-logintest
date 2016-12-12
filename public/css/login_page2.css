@@ -8,7 +8,7 @@ body {
 }
 
 #menu {
-    background-color: #282c30;
+    background-color: #021c1e;
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -19,7 +19,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #40be97;
+    background-color: #021c1e;
     min-height: 110px;
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 .barlinks {
-    font-family: Arial;
+    font-family: 'Roboto', sans-serif;;
     font-size: 1.3em;
     color: lightgray;
     text-decoration: none;
@@ -50,15 +50,15 @@ body {
 
 }
 
-#menuItem1:hover {background-color: #000; }
-#menuItem2:hover {background-color: #000; }
-#menuItem3:hover {background-color: #000; }
-#menuItem1:focus, .active {background-color: #000; }
-#menuItem2:focus, .active {background-color: #000; }
-#menuItem3:focus, .active {background-color: #000; }
+#menuItem1:hover {background-color: #004445; }
+#menuItem2:hover {background-color: #004445; }
+#menuItem3:hover {background-color: #004445; }
+#menuItem1:focus, .active {background-color: #004445; }
+#menuItem2:focus, .active {background-color: #004445; }
+#menuItem3:focus, .active {background-color: #004445; }
 
 article {
-    background-color: #d6e4f2;
+    background-color: #C9DAEA;
     width: 100vw;
 }
 
@@ -82,11 +82,12 @@ article {
     padding: 20px;
     width: 15vw;
     height: 100vh;
-    background-color: #b4c0cc;
+    background-color: #9CB6D0;
+    border-right: solid #9CB6D0 5px;
 }
 
 .contentTab {
-    font-family: Arial;
+    font-family: 'Roboto', sans-serif;;
     color: black;
     font-size: 1.3em;
 }
@@ -94,7 +95,7 @@ article {
 .title {
     margin: 0;
     margin-bottom: 15px;
-    font-family: Arial;
+    font-family: 'Roboto', sans-serif;;
 }
 
 .contentTitle {
@@ -124,11 +125,11 @@ article {
 #settingsFiles {}
 
 .tablinks {
-    font-family: Arial;
+    font-family: 'Roboto', sans-serif;;
     font-size: 1.1em;
     color: black;
     text-decoration: none;
-    padding-top: 5px;
+    padding-top: 10px;
     padding-left: 5px;
     padding-bottom: 5px;
 }
@@ -142,12 +143,12 @@ article {
 
 }
 
-#filesSettingsItem1:hover {background-color: grey; }
-#filesSettingsItem2:hover {background-color: grey; }
-#filesSettingsItem3:hover {background-color: grey; }
-#filesSettingsItem1:focus, .activeTab {border-bottom: solid grey 2px; }
-#filesSettingsItem2:focus, .activeTab {border-bottom: solid grey 2px; }
-#filesSettingsItem3:focus, .activeTab {border-bottom: solid grey 2px; }
+#filesSettingsItem1:hover {background-color: #2c7873; }
+#filesSettingsItem2:hover {background-color: #2c7873; }
+#filesSettingsItem3:hover {background-color: #2c7873; }
+#filesSettingsItem1:focus, .activeTab {border-bottom: solid #2c7873 4px; }
+#filesSettingsItem2:focus, .activeTab {border-bottom: solid #2c7873 4px; }
+#filesSettingsItem3:focus, .activeTab {border-bottom: solid #2c7873 4px; }
 
 #contentFiles {
     height: 100vh;
@@ -165,7 +166,7 @@ article {
 #settingsUser {
     display: flex;
     flex-direction: column-reverse;
-    font-family: Arial;
+    font-family: 'Roboto', sans-serif;;
 }
 
 #logOut {
@@ -177,7 +178,7 @@ article {
     align-items: center;
 }
 
-#logOut:hover {background-color: grey; }
+#logOut:hover {background-color: #2c7873; }
 
 #logOutText {
     margin: auto;
