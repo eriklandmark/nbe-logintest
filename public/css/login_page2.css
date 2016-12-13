@@ -2,7 +2,6 @@ body {
     display: flex;
     flex-direction: row;
     width: 100vw;
-    height: 100vh;
     margin: 0;
     padding: 0;
 }
@@ -12,7 +11,11 @@ body {
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    min-width: 15vw;
+    width: 15vw;
+    position: fixed;
+    height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .logo {
@@ -60,6 +63,7 @@ body {
 article {
     background-color: #C9DAEA;
     width: 100vw;
+    margin-left: 15vw;
 }
 
 .barcontent {
@@ -106,7 +110,6 @@ article {
 #areaStatistik {
     display: flex;
     flex-direction: row;
-    height: 100vh;
 }
 
 #settingsStatistik {
@@ -114,7 +117,9 @@ article {
 }
 
 #contentStatistik {
-    height: 100%;
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
     padding: 20px;
 }
 
@@ -153,6 +158,23 @@ article {
 #contentFiles {
     height: 100vh;
     padding: 20px;
+}
+
+#privateFiles {
+    font-size: 1.2em;
+}
+
+.privateFilesTitle {
+    padding-right: 400px;
+    padding-bottom: 10px;
+}
+
+#publicFiles {
+    font-size: 1.2em;
+}
+.publicFilesTitle {
+    padding-right: 300px;
+    padding-bottom: 10px;
 }
 
 #contentAreaUpload {

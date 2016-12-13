@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sinatra/base'
 require 'digest'
 require 'vine'
-require_relative  'functions'
+require_relative 'functions'
 
 
 enable :sessions

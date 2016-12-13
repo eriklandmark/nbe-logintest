@@ -4,26 +4,75 @@
     <title>nBe Login Test v2</title>
     <link rel="stylesheet" type="text/css" href="/css/login_page2.css">
     <script src="/js/login_page.js"></script>
-    <%
-      require 'find'
-      def getFiles()
-        directory = []
-        Find.find("database/files/private/" + session[:user]) do |path|
-          directory << path
-        end
+    <% require 'find'
 
-        files = Array.new
-        dirs = Array.new
-        directory.each() do |obj|
-          if !File.directory?(obj) && File.file?(obj)
-            files << obj
-          elsif File.directory?(obj) && !File.file?(obj)
-            dirs << obj
-          end
-        end
-        return files
-      end
-    %>
+       def getPrivateFileNames()
+         directory = []
+         Find.find("database/files/private/" + session[:user]) do |path|
+           directory << path
+         end
+
+         files = Array.new
+         dirs = Array.new
+         directory.each() do |obj|
+           if !File.directory?(obj) && File.file?(obj)
+             files << obj[obj.rindex("/") + 1, obj.length]
+           elsif File.directory?(obj) && !File.file?(obj)
+             dirs << obj
+           end
+         end
+
+         return files
+       end
+
+       def getPrivateFileSizes()
+         directory = []
+         Find.find("database/files/private/" + session[:user]) do |path|
+           directory << path
+         end
+
+         fileSizes = Array.new
+         directory.each() do |obj|
+           if !File.directory?(obj) && File.file?(obj)
+             fileSizes << '%.2f' % (File.size(obj).to_f)
+           end
+         end
+
+         return fileSizes
+       end
+
+       def getPublicFileSizes()
+         directory = []
+         Find.find("database/files/public") do |path|
+           directory << path
+         end
+
+         fileSizes = Array.new
+         directory.each() do |obj|
+           if !File.directory?(obj) && File.file?(obj)
+             fileSizes << '%.2f' % (File.size(obj).to_f)
+           end
+         end
+         return fileSizes
+       end
+
+       def getPublicFileNames()
+         directory = []
+         Find.find("database/files/public") do |path|
+           directory << path
+         end
+
+         files = Array.new
+         dirs = Array.new
+         directory.each() do |obj|
+           if !File.directory?(obj) && File.file?(obj)
+             files << obj[obj.rindex("/") + 1, obj.length]
+           elsif File.directory?(obj) && !File.file?(obj)
+             dirs << obj
+           end
+         end
+         return files
+       end%>
   </head>
   <body>
     <div id="menu">
@@ -47,7 +96,7 @@
           <h1 class="title">Statistik</h1>
         </div>
         <div id="contentStatistik" class="contentTab">
-          test
+          testjisjais
         </div>
       </div>
 
@@ -77,18 +126,32 @@
 
           <div id="contentAreaPublic" class="settingsContentItems">
             <h1 class="contentTitle">Publika Filer</h1>
-            <ul id="publicFiles"></ul>
-
+            <table id="publicFiles">
+              <tbody>
+              <tr>
+                <td class="publicFilesTitle"><b>Namn</b></td>
+                <td class="publicFilesTitle"><b>Storlek (b)</b></td>
+                <td class="publicFilesTitle"><b>Typ</b></td>
+              </tr>
+              </tbody>
+            </table>
             <script>
-                loadPublicFiles(<%= getFiles()%>);
+                loadPublicFiles(<%=getPublicFileNames%>, <%=getPublicFileSizes%>);
             </script>
           </div>
 
           <div id="contentAreaPrivate" class="settingsContentItems">
             <h1 class="contentTitle">Privata Filer</h1>
-            <ul id="privateFiles"></ul>
+            <table id="privateFiles">
+              <tbody>
+                <tr>
+                  <td class="privateFilesTitle"><b>Namn</b></td>
+                  <td class="privateFilesTitle"><b>Storlek (b)</b></td>
+                </tr>
+              </tbody>
+            </table>
             <script>
-                loadPrivateFiles(<%= getFiles()%>);
+                loadPrivateFiles(<%=getPrivateFileNames%>, <%=getPrivateFileSizes%>);
             </script>
           </div>
         </div>
@@ -109,7 +172,7 @@
         </div>
 
         <div id="contentUser" class="contentTab">
-          test
+          Ändra lösenord
         </div>
       </div>
 
