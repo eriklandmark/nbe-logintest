@@ -9,13 +9,11 @@ body {
 #menu {
     background-color: #021c1e;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-decoration: none;
     width: 15vw;
     position: fixed;
     height: 100vh;
-    padding-top: 20px;
-    padding-bottom: 20px;
 }
 
 .logo {
@@ -32,9 +30,35 @@ body {
 
 .barlinks {
     font-family: 'Roboto', sans-serif;;
-    font-size: 1.3em;
+    font-size: 1.1em;
     color: lightgray;
     text-decoration: none;
+}
+
+#logOut {
+    padding-left: 5px;
+    margin-bottom: 40px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logOut:hover {background-color: #2c7873; }
+
+#logOutText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;
+    color: lightgray;
+    margin: auto;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+
 }
 
 #menuItem1, #menuItem2, #menuItem3 {
@@ -68,7 +92,7 @@ article {
 
 .barcontent {
     display: none;
-    -webkit-animation: fadeEffect 1s;
+    /*-webkit-animation: fadeEffect 1s;
     animation: fadeEffect 1s; /* Fading effect takes 1 second */
 }
 
@@ -91,7 +115,7 @@ article {
 }
 
 .contentTab {
-    font-family: 'Roboto', sans-serif;;
+    font-family: 'Roboto', sans-serif;
     color: black;
     font-size: 1.3em;
 }
@@ -161,19 +185,19 @@ article {
 }
 
 #privateFiles {
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .privateFilesTitle {
-    padding-right: 400px;
+    padding-right: 100px;
     padding-bottom: 10px;
 }
 
 #publicFiles {
-    font-size: 1.2em;
+    font-size: 1em;
 }
 .publicFilesTitle {
-    padding-right: 300px;
+    padding-right: 100px;
     padding-bottom: 10px;
 }
 
@@ -187,30 +211,8 @@ article {
 
 #settingsUser {
     display: flex;
-    flex-direction: column-reverse;
-    font-family: 'Roboto', sans-serif;;
-}
-
-#logOut {
-    padding-left: 5px;
-    margin-bottom: 60px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#logOut:hover {background-color: #2c7873; }
-
-#logOutText {
-    margin: auto;
-}
-
-.tabs {
-    display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    height: 100vh;
+    font-family: 'Roboto', sans-serif;;
 }
 
 #contentUser {

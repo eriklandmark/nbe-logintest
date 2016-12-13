@@ -92,20 +92,29 @@ function loadPrivateFiles(fileNames, fileSize) {
         var file = document.createElement('tr');
         var tableFileName = document.createElement("td");
         var tableFileSizes = document.createElement("td");
+        var tableFileType = document.createElement("td");
 
         tableFileName.className = "privateFileRows"
         tableFileSizes.className = "privateFileRows"
 
-        dwnldLink = document.createElement('a');
+        var dwnldLink = document.createElement('a');
         dwnldLink.setAttribute("href", "/download/" + files[i]);
         dwnldLink.textContent = files[i];
 
         var fs = document.createElement('td');
         tableFileSizes.appendChild(fs);
         fs.textContent = fileSizes[i];
+
+        var fType = document.createElement('td');
+        var fileName = files[i];
+        fType.textContent = fileName.substring(fileName.indexOf(".") + 1).toUpperCase();
+
+        tableFileSizes.appendChild(fs);
         tableFileName.appendChild(dwnldLink);
+        tableFileType.appendChild(fType);
         file.appendChild(tableFileName);
         file.appendChild(tableFileSizes);
+        file.appendChild(tableFileType);
         table.appendChild(file);
     }
 }

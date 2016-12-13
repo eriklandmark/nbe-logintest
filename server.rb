@@ -16,13 +16,11 @@ get '/login' do
 end
 
 post '/login' do
-  user = params["user"].to_s
-
-  if checkDatabase(user: user, pass: params["password"])
-    p "Logged in user: " + user
+  if checkDatabase(user: params["user"], pass: params["password"])
+    p "Logged in user: " + params["user"]
+    session[:user] = params["user"]
     params["user"] = ""
     params["password"] = ""
-    session[:user] = user
     erb :login_page2
   else
     erb :fail
@@ -48,8 +46,16 @@ get '/download/:filename' do |filename|
   redirect "/post"
 end
 
-post '/upload' do
-  p "Uploading file..."
+post '/upload-public' do
+  p "Uploading file to public db..."
+  File.open("database/files/public/" + params["fileInput"][:filename], "w") do |f|
+    f.write(params["fileInput"][:tempfile].read)
+  end
+  erb :login_page2
+end
+
+post '/upload-private' do
+  p "Uploading file to private db..."
   if !Dir.exists?("database/files/private/"+session[:user])
     Dir.mkdir("database/files/private/"+ session[:user])
   end
