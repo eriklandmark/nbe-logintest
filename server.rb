@@ -39,11 +39,10 @@ end
 
 get '/download/:filename' do |filename|
 
-  path = "database/files/private/erik.landmark@itggot.se/" + filename
+  path = "database/files/private/"+ session[:user] + "/" + filename
   if File.exists?(path)
     send_file path, :filename => filename, :type => 'Application/octet-stream'
   end
-  redirect "/post"
 end
 
 post '/upload-public' do
