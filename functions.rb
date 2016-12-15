@@ -1,9 +1,10 @@
 def checkDatabase(user:, pass:)
   hash = Hash.new
   hashPass = encode(msg: pass)
-
-  if File.exists?("database/database.txt")
-    File.open("database/database.txt", 'r') do |file|
+  path = Dir.getwd
+  p path
+  if File.exists?(path + "/database/database.txt")
+    File.open(path + "/database/database.txt", 'r') do |file|
       lines = []
       file.readlines().each do |line|
         lines << line.chomp

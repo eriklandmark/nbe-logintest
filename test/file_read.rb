@@ -1,7 +1,7 @@
 def checkDatabase(user:, pass:)
   hash = Hash.new
-
-  File.open("database/info.txt", 'r') do |file|
+  path = Dir.getwd
+  File.open(path + "/encode.rb", 'r') do |file|
     lines = []
     file.readlines().each do |line|
       lines << line.chomp
@@ -21,6 +21,11 @@ def checkDatabase(user:, pass:)
   else
     return false
   end
+end
+
+def ls()
+  p Dir.getwd
+  p Dir.glob("*")
 end
 
 
